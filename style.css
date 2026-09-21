@@ -9,7 +9,6 @@
   --paper: #f7f6f2;
   --card: #ffffff;
   --accent: #b79a67;
-  --media-bg: #ecebe7;
   --max: 1120px;
 }
 
@@ -144,7 +143,7 @@ body {
 
 .testimonial-media {
   padding: 18px;
-  background: var(--media-bg);
+  background: #ecebe7;
   align-self: stretch;
 }
 
@@ -152,11 +151,15 @@ body {
   padding: 55px 58px;
 }
 
+.testimonial.no-media .testimonial-body {
+  grid-column: 1 / -1;
+}
+
 .quote-mark {
   font-family: Georgia, serif;
   font-size: 5rem;
   line-height: .65;
-  color: var(--accent);
+  color: #b79a67;
   height: 42px;
 }
 
@@ -182,110 +185,49 @@ blockquote {
   font-size: .82rem;
 }
 
-/* General photo grid used by the testimonials that have two unrelated photos. */
 .image-grid {
   display: grid;
   gap: 10px;
+  height: 100%;
 }
 
 .image-grid.two {
   grid-template-columns: 1fr 1fr;
 }
 
+.image-grid.three {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .image-grid figure {
   margin: 0;
+  min-height: 320px;
   overflow: hidden;
   background: #ddd;
 }
 
 .image-grid img {
   width: 100%;
-  height: 360px;
+  height: 100%;
+  min-height: 320px;
   display: block;
   object-fit: cover;
 }
 
-/* Ajay: intentionally one photo only, displayed at a comfortable size. */
-.ajay-media {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.ajay-media figure {
-  width: 100%;
-  margin: 0;
-  background: #ddd;
-  overflow: hidden;
-}
-
-.ajay-media img {
-  width: 100%;
-  height: auto;
-  max-height: 750px;
-  display: block;
-  object-fit: contain;
+.image-grid.before-after figure:first-child img,
+.image-grid.before-after figure:nth-child(2) img {
   object-position: center;
 }
 
-/* Transformation blocks: always two columns on desktop/tablet. */
-.transformation-grid {
+.image-labels {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
   gap: 10px;
-}
-
-.transformation-grid figure {
-  margin: 0;
-  min-width: 0;
-  background: #ddd;
-  overflow: hidden;
-}
-
-.transformation-grid img {
-  width: 100%;
-  height: 430px;
-  display: block;
-  object-fit: contain;
-  background: #ddd;
-}
-
-.transformation-grid figcaption {
-  padding: 9px 5px 2px;
-  background: var(--media-bg);
-  color: #686868;
-  font-size: .72rem;
-  line-height: 1.35;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  text-align: center;
-}
-
-/* Prithiv: before/after side-by-side, with training directly underneath. */
-.prithiv-training {
-  margin-top: 18px;
-}
-
-.prithiv-training figure {
-  margin: 0;
-  background: #ddd;
-  overflow: hidden;
-}
-
-.prithiv-training img {
-  width: 100%;
-  height: 390px;
-  display: block;
-  object-fit: contain;
-  background: #ddd;
-}
-
-.prithiv-training figcaption {
-  padding: 9px 5px 2px;
-  color: #686868;
+  margin-top: 9px;
   font-size: .72rem;
   text-transform: uppercase;
   letter-spacing: .08em;
+  color: #686868;
   text-align: center;
 }
 
@@ -344,16 +286,9 @@ footer {
     padding: 40px 30px;
   }
 
+  .image-grid figure,
   .image-grid img {
-    height: 300px;
-  }
-
-  .transformation-grid img {
-    height: 360px;
-  }
-
-  .prithiv-training img {
-    height: 340px;
+    min-height: 260px;
   }
 
   .closing-card {
@@ -375,31 +310,14 @@ footer {
     padding: 75px 0;
   }
 
-  /* Keep transformation photos side-by-side, but make them shorter. */
-  .transformation-grid {
-    gap: 7px;
+  .image-grid.two,
+  .image-grid.three {
+    grid-template-columns: 1fr;
   }
 
-  .transformation-grid img {
-    height: 250px;
-  }
-
-  .transformation-grid figcaption,
-  .prithiv-training figcaption {
-    font-size: .63rem;
-    letter-spacing: .05em;
-  }
-
-  .image-grid.two {
-    grid-template-columns: 1fr 1fr;
-  }
-
+  .image-grid figure,
   .image-grid img {
-    height: 230px;
-  }
-
-  .prithiv-training img {
-    height: 280px;
+    min-height: 330px;
   }
 
   .testimonial-media {
