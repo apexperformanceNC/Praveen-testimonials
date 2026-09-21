@@ -184,7 +184,7 @@ blockquote {
 .image-grid {
   display: grid;
   gap: 10px;
-  height: 100%;
+  align-items: center;
 }
 
 .image-grid.two {
@@ -195,19 +195,25 @@ blockquote {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+.image-grid.before-after {
+  grid-template-columns: 1fr 1fr;
+}
+
 .image-grid figure {
   margin: 0;
-  min-height: 320px;
   overflow: hidden;
   background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .image-grid img {
   width: 100%;
-  height: 100%;
-  min-height: 320px;
+  height: auto;
+  max-height: 430px;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .image-grid.before-after figure:first-child img,
@@ -282,9 +288,8 @@ footer {
     padding: 40px 30px;
   }
 
-  .image-grid figure,
   .image-grid img {
-    min-height: 260px;
+    max-height: 380px;
   }
 
   .closing-card {
@@ -307,13 +312,13 @@ footer {
   }
 
   .image-grid.two,
-  .image-grid.three {
+  .image-grid.three,
+  .image-grid.before-after {
     grid-template-columns: 1fr;
   }
 
-  .image-grid figure,
   .image-grid img {
-    min-height: 330px;
+    max-height: 430px;
   }
 
   .testimonial-media {
