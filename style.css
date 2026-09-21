@@ -185,42 +185,46 @@ blockquote {
   font-size: .82rem;
 }
 
-/*
-   IMAGE LAYOUT
-   Images keep their natural proportions instead of being forced into
-   a fixed height. This prevents portrait photos from looking squeezed.
-*/
+/* Image layouts */
 .image-grid {
   display: grid;
   gap: 10px;
   align-items: start;
 }
 
-.image-grid figure {
+.image-grid figure,
+.prithiv-transformation figure,
+.prithiv-training {
   margin: 0;
-  overflow: hidden;
-  background: #ddd;
 }
 
-.image-grid img {
+.image-grid img,
+.prithiv-transformation img,
+.prithiv-training img {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: contain;
+}
+
+.image-grid.one {
+  grid-template-columns: 1fr;
 }
 
 .image-grid.two {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.image-grid.three {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+/* Prithiv: Before + After side-by-side, each label directly underneath;
+   Training is a separate full-width image underneath. */
+.prithiv-transformation {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  align-items: start;
 }
 
-.image-labels {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+.prithiv-transformation figcaption,
+.prithiv-training figcaption {
   margin-top: 9px;
   font-size: .72rem;
   text-transform: uppercase;
@@ -229,37 +233,21 @@ blockquote {
   text-align: center;
 }
 
-/* Prithiv: Before + After side-by-side, Training underneath. */
-.testimonials > article:nth-of-type(3) .image-grid.three {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.prithiv-training {
+  margin-top: 10px;
 }
 
-.testimonials > article:nth-of-type(3) .image-grid.three figure:nth-child(3) {
-  grid-column: 1 / -1;
-  width: 100%;
-}
-
-.testimonials > article:nth-of-type(3) .image-labels {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.testimonials > article:nth-of-type(3) .image-labels span:nth-child(3) {
-  grid-column: 1 / -1;
-}
-
-/* SH: two full portrait photos side-by-side without distortion. */
-.testimonials > article:nth-of-type(5) .image-grid.two {
+/* SH: both source images are 720x1280, so natural sizing keeps them
+   side-by-side at the same aspect ratio without distortion. */
+.testimonial-sh .image-grid.two {
   align-items: start;
 }
 
-.testimonials > article:nth-of-type(5) .image-grid.two figure {
-  aspect-ratio: 9 / 16;
-}
-
-.testimonials > article:nth-of-type(5) .image-grid.two img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+/* Saravanan: keep each source image at its natural aspect ratio.
+   The two source images have different proportions, so their heights
+   are intentionally allowed to differ. */
+.testimonial-saravanan .image-grid.two {
+  align-items: start;
 }
 
 .closing {
@@ -337,31 +325,12 @@ footer {
   }
 
   .image-grid.two,
-  .image-grid.three,
-  .testimonials > article:nth-of-type(3) .image-grid.three {
+  .prithiv-transformation {
     grid-template-columns: 1fr;
   }
 
-  .testimonials > article:nth-of-type(3) .image-grid.three figure:nth-child(3) {
-    grid-column: auto;
-  }
-
-  .image-labels,
-  .testimonials > article:nth-of-type(3) .image-labels {
-    grid-template-columns: 1fr;
-  }
-
-  .testimonials > article:nth-of-type(3) .image-labels span:nth-child(3) {
-    grid-column: auto;
-  }
-
-  .testimonials > article:nth-of-type(5) .image-grid.two {
-    grid-template-columns: 1fr;
-  }
-
-  .testimonials > article:nth-of-type(5) .image-grid.two figure {
-    max-width: 100%;
-    margin: 0 auto;
+  .prithiv-training {
+    margin-top: 14px;
   }
 
   .testimonial-media {
