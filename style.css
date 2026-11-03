@@ -211,7 +211,8 @@ blockquote {
 }
 /* Saravanan portrait only */
 .testimonial-saravanan .image-grid.one {
-  max-width: 280px;
+  width: 200px;
+  max-width: 100%;
 }
 
 .image-grid.two {
