@@ -143,8 +143,8 @@ body {
 
 .testimonial-media {
   padding: 18px;
-  background: #ecebe7;
-  align-self: stretch;
+  background: transparent;
+  align-self: start;
 }
 
 .testimonial-body {
