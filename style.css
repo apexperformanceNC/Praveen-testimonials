@@ -209,6 +209,10 @@ blockquote {
 .image-grid.one {
   grid-template-columns: 1fr;
 }
+/* Saravanan portrait only */
+.testimonial-saravanan .image-grid.one {
+  max-width: 280px;
+}
 
 .image-grid.two {
   grid-template-columns: repeat(2, minmax(0, 1fr));
